@@ -1,2 +1,9 @@
-package co.edu.uniquindio.unimarket.modelo;public enum Ciudad {
+package co.edu.uniquindio.unimarket.modelo;
+
+public enum Ciudad {
+    ARMENIA,
+    MANIZALES,
+    BARRANQUILLA,
+    BOGOTA,
+    CALI
 }
