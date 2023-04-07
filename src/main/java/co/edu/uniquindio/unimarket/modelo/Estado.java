@@ -1,4 +1,2 @@
-package co.edu.uniquindio.unimarket.modelo;
-
-public class Estado {
+package co.edu.uniquindio.unimarket.modelo;public enum Estado {
 }
