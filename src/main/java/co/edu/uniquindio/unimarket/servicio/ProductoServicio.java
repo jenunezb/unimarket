@@ -1,7 +1,7 @@
 package co.edu.uniquindio.unimarket.servicio;
 
-import co.edu.uniquindio.unimarket.DTO.ProductoDTO;
-import co.edu.uniquindio.unimarket.DTO.ProductoGetDTO;
+import co.edu.uniquindio.unimarket.dto.ProductoDTO;
+import co.edu.uniquindio.unimarket.dto.ProductoGetDTO;
 import co.edu.uniquindio.unimarket.modelo.Categoria;
 import co.edu.uniquindio.unimarket.modelo.Estado;
 

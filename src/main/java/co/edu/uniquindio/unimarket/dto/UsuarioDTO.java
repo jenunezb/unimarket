@@ -1,8 +1,6 @@
-package co.edu.uniquindio.unimarket.DTO;
+package co.edu.uniquindio.unimarket.dto;
 
-public class UsuarioGetDTO {
-
-    private int codigo;
+public class UsuarioDTO {
 
     private String nombre;
 
@@ -13,5 +11,6 @@ public class UsuarioGetDTO {
     private String telefono;
 
     private String password;
-
 }
+
+

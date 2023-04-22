@@ -1,2 +1,4 @@
-package co.edu.uniquindio.unimarket.modelo;public class Mensaje {
+package co.edu.uniquindio.unimarket.modelo;
+
+public class Mensaje {
 }

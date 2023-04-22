@@ -1,13 +1,12 @@
 package co.edu.uniquindio.unimarket.modelo;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.Email;
 import lombok.*;
 
 import java.io.Serializable;
-
 
 @Getter
 @Setter
@@ -15,6 +14,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
+@MappedSuperclass
 public class Persona implements Serializable {
 
     @Id

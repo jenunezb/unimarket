@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.*;
 
+import java.io.Serializable;
+
 @Entity
 @Getter
 @Setter
@@ -11,10 +13,10 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-public class Moderador {
+public class Moderador extends Persona implements Serializable {
 
     @EqualsAndHashCode.Include
     @Id
-    private String codigo;
+    private int codigo;
 
 }

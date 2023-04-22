@@ -4,18 +4,18 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
 
-public class Usuario implements Serializable {
+public class Usuario extends Persona implements Serializable {
+
     @Id
-    @EqualsAndHashCode.Include
     @Column(length = 10)
     private String cedula;
 
@@ -29,5 +29,10 @@ public class Usuario implements Serializable {
     @Enumerated(EnumType.STRING)
     private Ciudad ciudad;
 
+    @OneToMany(mappedBy = "vendedor")
+    private List<Producto> productos;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Comentario> comentarios;
 
 }

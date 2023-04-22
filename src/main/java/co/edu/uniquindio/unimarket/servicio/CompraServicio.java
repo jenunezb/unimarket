@@ -1,6 +1,6 @@
 package co.edu.uniquindio.unimarket.servicio;
 
-import co.edu.uniquindio.unimarket.DTO.CompraGetDTO;
+import co.edu.uniquindio.unimarket.dto.CompraGetDTO;
 import java.util.List;
 
 public interface CompraServicio {

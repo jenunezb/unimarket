@@ -1,4 +1,4 @@
-package co.edu.uniquindio.unimarket.DTO;
+package co.edu.uniquindio.unimarket.dto;
 
 import java.util.List;
 
