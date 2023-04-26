@@ -4,5 +4,10 @@ public enum Categoria {
     ROPA,
     TECNOLOGIA,
     VEHICULO,
-    ZAPATOS
+    ZAPATOS,
+    ELECTRONICA,
+    MODA,
+    HOGAR,
+    DEPORTES,
+    HERRAMIENTAS
 }

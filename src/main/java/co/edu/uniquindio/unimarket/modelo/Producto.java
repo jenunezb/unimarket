@@ -65,4 +65,15 @@ public class Producto implements Serializable {
 
     @OneToMany(mappedBy = "producto")
     private List<Detalle_Compra> detalle_compras;
+
+    public Producto( String nombre, int unidades, String descripcion, double precio, Estado estado, Categoria categoria, LocalDate fecha_creado, LocalDate fecha_limite) {
+        this.nombre = nombre;
+        this.unidades = unidades;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.estado = estado;
+        this.categoria = categoria;
+        this.fecha_creado = fecha_creado;
+        this.fecha_limite = fecha_limite;
+    }
 }

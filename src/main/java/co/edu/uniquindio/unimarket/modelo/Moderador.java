@@ -17,6 +17,6 @@ public class Moderador extends Persona implements Serializable {
 
     @EqualsAndHashCode.Include
     @Id
-    private int codigo;
+    private String cedula;
 
 }
