@@ -1,4 +1,6 @@
+/**
 package co.edu.uniquindio.unimarket.servicio.implementacion;
+
 
 import co.edu.uniquindio.unimarket.dto.UsuarioDTO;
 import co.edu.uniquindio.unimarket.dto.UsuarioGetDTO;
@@ -31,9 +33,6 @@ public class UsuarioServicioImpl implements UsuarioServicio {
     @Override
     public UsuarioGetDTO actualizarUsuario(int codigoUsuario, UsuarioDTO usuarioDTO) throws Exception{
 
-        /**
-         * TODO Validar que el correo no se repita
-         */
 
         validarExiste(codigoUsuario);
 
@@ -97,5 +96,6 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 
         return usuario;
     }
-
 }
+
+ **/

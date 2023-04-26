@@ -1,6 +1,7 @@
 package co.edu.uniquindio.unimarket.modelo;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.*;
 
 import java.io.Serializable;
@@ -11,13 +12,9 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@ToString(callSuper = true, onlyExplicitlyIncluded = true)
 
 public class Usuario extends Persona implements Serializable {
-
-    @Id
-    @Column(length = 10)
-    private String cedula;
 
     @Column(nullable = false, length = 200)
     private String direccion;
@@ -35,4 +32,7 @@ public class Usuario extends Persona implements Serializable {
     @OneToMany(mappedBy = "usuario")
     private List<Comentario> comentarios;
 
+    public Usuario(int codigo, String nombre, @Email String email, String password) {
+        super(codigo, nombre, email, password);
+    }
 }

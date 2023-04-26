@@ -1,20 +1,6 @@
 package co.edu.uniquindio.unimarket.servicio.implementacion;
 
-import co.edu.uniquindio.unimarket.dto.ProductoDTO;
-import co.edu.uniquindio.unimarket.dto.ProductoGetDTO;
-import co.edu.uniquindio.unimarket.modelo.Activo;
-import co.edu.uniquindio.unimarket.modelo.Categoria;
-import co.edu.uniquindio.unimarket.modelo.Estado;
-import co.edu.uniquindio.unimarket.modelo.Producto;
-import co.edu.uniquindio.unimarket.repositorio.ProductoRepo;
-import co.edu.uniquindio.unimarket.servicio.interfaces.ProductoServicio;
-import co.edu.uniquindio.unimarket.servicio.interfaces.UsuarioServicio;
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-
+/*
 @Service
 @AllArgsConstructor
 public class ProductoServicioImpl implements ProductoServicio {
@@ -128,4 +114,5 @@ public class ProductoServicioImpl implements ProductoServicio {
     public List<ProductoGetDTO> listarProductosPrecio(float precioMinimo, float precioMaximo) {
         return null;
     }
-}
+
+*/
