@@ -1,12 +1,10 @@
-/**
-package co.edu.uniquindio.unimarket.servicio.implementacion;
-
+package co.edu.uniquindio.unimarket.servicios.implementacion;
 
 import co.edu.uniquindio.unimarket.dto.UsuarioDTO;
 import co.edu.uniquindio.unimarket.dto.UsuarioGetDTO;
 import co.edu.uniquindio.unimarket.modelo.Usuario;
-import co.edu.uniquindio.unimarket.repositorio.UsuarioRepo;
-import co.edu.uniquindio.unimarket.servicio.interfaces.UsuarioServicio;
+import co.edu.uniquindio.unimarket.repositorios.UsuarioRepo;
+import co.edu.uniquindio.unimarket.servicios.interfaces.UsuarioServicio;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
@@ -33,6 +31,9 @@ public class UsuarioServicioImpl implements UsuarioServicio {
     @Override
     public UsuarioGetDTO actualizarUsuario(int codigoUsuario, UsuarioDTO usuarioDTO) throws Exception{
 
+        /**
+         * TODO Validar que el correo no se repita
+         */
 
         validarExiste(codigoUsuario);
 
@@ -96,6 +97,5 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 
         return usuario;
     }
-}
 
- **/
+}

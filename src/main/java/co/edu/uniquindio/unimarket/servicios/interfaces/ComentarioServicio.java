@@ -1,4 +1,4 @@
-package co.edu.uniquindio.unimarket.servicio;
+package co.edu.uniquindio.unimarket.servicios.interfaces;
 
 import co.edu.uniquindio.unimarket.dto.ComentarioDTO;
 import co.edu.uniquindio.unimarket.dto.ComentarioGetDTO;
@@ -9,6 +9,6 @@ public interface ComentarioServicio {
 
     int crearComentario(ComentarioDTO comentarioDTO);
 
-    List<ComentarioGetDTO> listarComentario(int codigoProducto);
+    List<ComentarioGetDTO> listarComentarios(int codigoProducto);
 
 }

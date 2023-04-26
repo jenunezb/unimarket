@@ -1,14 +1,16 @@
 package co.edu.uniquindio.unimarket.dto;
 
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
+@AllArgsConstructor
+@Getter
+@Setter
 public class DetalleCompraDTO {
 
+    private int codigoProducto;
     private int unidades;
-
     private float precio;
 
-    private int codigoProducto;
-
-    private List<DetalleCompraDTO> detalleCompraDTO;
 }
