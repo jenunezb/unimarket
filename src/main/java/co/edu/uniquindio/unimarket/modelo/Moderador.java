@@ -2,6 +2,7 @@ package co.edu.uniquindio.unimarket.modelo;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.*;
 
 import java.io.Serializable;
@@ -11,12 +12,10 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
 public class Moderador extends Persona implements Serializable {
 
-    @EqualsAndHashCode.Include
     @Id
-    private String cedula;
+    private int cedula;
 
 }

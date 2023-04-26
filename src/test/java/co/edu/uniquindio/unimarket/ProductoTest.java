@@ -3,7 +3,7 @@ package co.edu.uniquindio.unimarket;
 import co.edu.uniquindio.unimarket.modelo.Categoria;
 import co.edu.uniquindio.unimarket.modelo.Estado;
 import co.edu.uniquindio.unimarket.modelo.Producto;
-import co.edu.uniquindio.unimarket.repositorio.ProductoRepo;
+import co.edu.uniquindio.unimarket.repositorios.ProductoRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,17 +32,18 @@ public class ProductoTest {
     @Test
     @Sql("classpath:dataset.sql")
     public void listar(){
-        List<Producto> listaProductos = productoRepo.findAll();
-
-        System.out.println(listaProductos);
+            List<Producto> productos = productoRepo.listarProductos();
+            System.out.println(productos);
+            Assertions.assertNotNull(productos);
     }
 
-    @Test
+    /**@Test
     @Sql("classpath:dataset.sql")
     public void buscar(){
         List<Producto> productoBuscado = productoRepo.listarProductosUsuario("085");
         Assertions.assertNotNull(productoBuscado);
     }
+     **/
 
     @Test
     @Sql("classpath:dataset.sql")

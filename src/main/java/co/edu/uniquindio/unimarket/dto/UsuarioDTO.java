@@ -1,5 +1,6 @@
 package co.edu.uniquindio.unimarket.dto;
 
+import co.edu.uniquindio.unimarket.modelo.Ciudad;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -11,6 +12,16 @@ import org.hibernate.validator.constraints.Length;
 @Getter
 @Setter
 public class UsuarioDTO {
+
+    @NotNull
+    @NotBlank
+    @Length(max = 12, message = "El teléfono debe tener máximo 12 caracteres")
+    private Ciudad ciudad;
+
+    @NotNull
+    @NotBlank
+    @Length(max = 150, message = "El nombre debe tener máximo 100 caracteres")
+    private Integer cedula;
 
     @NotNull
     @NotBlank

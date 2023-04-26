@@ -25,20 +25,20 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         }
 
         Usuario usuario = convertir(usuarioDTO);
-        return usuarioRepo.save( usuario ).getCodigo();
+        return usuarioRepo.save( usuario ).getCedula();
     }
 
     @Override
     public UsuarioGetDTO actualizarUsuario(int codigoUsuario, UsuarioDTO usuarioDTO) throws Exception{
 
-        /**
-         * TODO Validar que el correo no se repita
-         */
+/*
+          TODO Validar que el correo no se repita
+*/
 
         validarExiste(codigoUsuario);
 
         Usuario usuario = convertir(usuarioDTO);
-        usuario.setCodigo(codigoUsuario);
+        usuario.setCedula(codigoUsuario);
 
         return convertir( usuarioRepo.save(usuario) );
     }
@@ -77,7 +77,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
     private UsuarioGetDTO convertir(Usuario usuario){
 
         UsuarioGetDTO usuarioDTO = new UsuarioGetDTO(
-                usuario.getCodigo(),
+                usuario.getCedula(),
                 usuario.getNombre(),
                 usuario.getEmail(),
                 usuario.getDireccion(),
@@ -89,11 +89,13 @@ public class UsuarioServicioImpl implements UsuarioServicio {
     private Usuario convertir(UsuarioDTO usuarioDTO){
 
         Usuario usuario = new Usuario();
+        usuario.setCedula(usuarioDTO.getCedula());
         usuario.setNombre( usuarioDTO.getNombre() );
         usuario.setEmail( usuarioDTO.getEmail() );
         usuario.setDireccion( usuarioDTO.getDireccion() );
         usuario.setTelefono( usuarioDTO.getTelefono() );
         usuario.setPassword( usuarioDTO.getPassword() );
+        usuario.setCiudad( usuarioDTO.getCiudad());
 
         return usuario;
     }

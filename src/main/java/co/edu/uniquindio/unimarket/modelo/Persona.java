@@ -19,7 +19,7 @@ public class Persona implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
-    private String cedula;
+    private int cedula;
 
     @Column(nullable = false)
     private String nombre;
