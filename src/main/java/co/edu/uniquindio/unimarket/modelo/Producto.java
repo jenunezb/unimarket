@@ -5,7 +5,7 @@ import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -33,20 +33,24 @@ public class Producto implements Serializable {
     private String descripcion;
 
     @Column(nullable = false)
-    private double precio;
+    private float precio;
 
     @Enumerated(EnumType.STRING)
     private Estado estado;
 
     @Enumerated(EnumType.STRING)
+    @ElementCollection
+    private List<Categoria> categoria;
+
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Categoria categoria;
+    private Activo activo;
 
     @Column(nullable = false)
-    private LocalDate fecha_creado;
+    private LocalDateTime fechaCreacion;
 
     @Column(nullable = false)
-    private LocalDate fecha_limite;
+    private LocalDateTime fechaLimite;
 
     @ManyToOne
     private Usuario vendedor;
@@ -66,14 +70,15 @@ public class Producto implements Serializable {
     @OneToMany(mappedBy = "producto")
     private List<Detalle_Compra> detalle_compras;
 
-    public Producto( String nombre, int unidades, String descripcion, double precio, Estado estado, Categoria categoria, LocalDate fecha_creado, LocalDate fecha_limite) {
+    public Producto( String nombre, int unidades, String descripcion, float precio, Estado estado, List<Categoria> categoria, LocalDateTime fechaCreacion, LocalDateTime fechaLimite, Activo activo) {
         this.nombre = nombre;
         this.unidades = unidades;
         this.descripcion = descripcion;
         this.precio = precio;
         this.estado = estado;
         this.categoria = categoria;
-        this.fecha_creado = fecha_creado;
-        this.fecha_limite = fecha_limite;
+        this.fechaCreacion = fechaCreacion;
+        this.fechaLimite = fechaLimite;
+        this.activo = activo;
     }
 }

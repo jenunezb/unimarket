@@ -1,4 +1,4 @@
-/**package co.edu.uniquindio.unimarket.servicios.implementacion;
+package co.edu.uniquindio.unimarket.servicios.implementacion;
 
 import co.edu.uniquindio.unimarket.dto.ProductoDTO;
 import co.edu.uniquindio.unimarket.dto.ProductoGetDTO;
@@ -32,7 +32,7 @@ public class ProductoServicioImpl implements ProductoServicio {
         producto.setPrecio( productoDTO.getPrecio() );
         producto.setVendedor( usuarioServicio.obtener( productoDTO.getCodigoVendedor() ) );
         producto.setImagen( productoDTO.getImagenes() );
-        producto.setCategoria( productoDTO.getCategorias() );
+        producto.setCategoria( productoDTO.getCategoria() );
         producto.setActivo( Activo.INACTIVO );
         producto.setFechaCreacion( LocalDateTime.now() );
         producto.setFechaLimite( LocalDateTime.now().plusDays(60) );
@@ -81,15 +81,9 @@ public class ProductoServicioImpl implements ProductoServicio {
     private ProductoGetDTO convertir(Producto producto){
 
         ProductoGetDTO productoGetDTO = new ProductoGetDTO(
-                producto.getCodigo(),
-                producto.getActivo(),
-                producto.getFechaLimite(),
-                producto.getNombre(),
-                producto.getDescripcion(),
-                producto.getUnidades(),
-                producto.getPrecio(),
-                producto.getVendedor().getCodigo(),
-                producto.getImagen(),
+                producto.getCodigo(), producto.getEstado(),producto.getFechaLimite(),
+                producto.getNombre(), producto.getDescripcion(), producto.getUnidades(),
+                producto.getPrecio(),producto.getVendedor().getCedula(),producto.getImagen(),
                 producto.getCategoria()
         );
 
@@ -129,4 +123,3 @@ public class ProductoServicioImpl implements ProductoServicio {
         return null;
     }
 }
-**/

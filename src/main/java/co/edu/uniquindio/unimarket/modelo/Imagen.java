@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
@@ -17,8 +18,8 @@ public class Imagen implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codigo;
 
-    @Column(nullable = false)
-    private String ruta;
+    @ElementCollection
+    private List<String> imagenes;
 
     @ManyToOne
     private Producto producto;

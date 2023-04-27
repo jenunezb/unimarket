@@ -26,16 +26,21 @@ public class Usuario extends Persona implements Serializable {
     @Enumerated(EnumType.STRING)
     private Ciudad ciudad;
 
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Estado estado;
+
     @OneToMany(mappedBy = "vendedor")
     private List<Producto> productos;
 
     @OneToMany(mappedBy = "usuario")
     private List<Comentario> comentarios;
 
-    public Usuario(Integer cedula, String nombre, @Email String email, String password, String direccion, String telefono, Ciudad ciudad) {
+    public Usuario(Integer cedula, String nombre, @Email String email, String password, String direccion, String telefono, Ciudad ciudad, Estado estado) {
         super(cedula, nombre, email, password);
         this.direccion = direccion;
         this.telefono = telefono;
         this.ciudad = ciudad;
+        this.estado = estado;
     }
 }

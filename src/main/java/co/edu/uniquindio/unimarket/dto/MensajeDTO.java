@@ -1,16 +1,15 @@
 package co.edu.uniquindio.unimarket.dto;
-
 import lombok.AllArgsConstructor;
-import lombok.Data;
-
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import org.springframework.http.HttpStatus;
+@Getter
+@Setter
 @AllArgsConstructor
-@Data
-public class MensajeDTO <T>{
-
-    private String mensaje;
-    private T dato;
-
-    public MensajeDTO(String mensaje) {
-        this.mensaje = mensaje;
-    }
+@ToString
+public class MensajeDTO<T> {
+    private HttpStatus estado;
+    private boolean error;
+    private T respuesta;
 }

@@ -1,12 +1,11 @@
 package co.edu.uniquindio.unimarket.servicios.interfaces;
 
 import co.edu.uniquindio.unimarket.dto.SesionDTO;
-import co.edu.uniquindio.unimarket.dto.TokenDTO;
 
 public interface SesionServicio {
 
-    TokenDTO login(SesionDTO sesionDTO);
+    void login(SesionDTO dto) throws Exception;
 
-    void logout(int codigoUsuario);
+    void logout(int codigoUsuario) throws Exception;
 
 }

@@ -2,11 +2,18 @@ package co.edu.uniquindio.unimarket.servicios.implementacion;
 
 import co.edu.uniquindio.unimarket.dto.UsuarioDTO;
 import co.edu.uniquindio.unimarket.dto.UsuarioGetDTO;
+import co.edu.uniquindio.unimarket.modelo.Estado;
 import co.edu.uniquindio.unimarket.modelo.Usuario;
 import co.edu.uniquindio.unimarket.repositorios.UsuarioRepo;
 import co.edu.uniquindio.unimarket.servicios.interfaces.UsuarioServicio;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import javax.print.AttributeException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,17 +22,22 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 
     private final UsuarioRepo usuarioRepo;
 
+    @Autowired
+    private final PasswordEncoder passwordEncoder;
+
+
     @Override
-    public int crearUsuario(UsuarioDTO usuarioDTO) throws Exception{
-
-        Usuario buscado = usuarioRepo.buscarUsuario(usuarioDTO.getEmail());
-
-        if(buscado!=null){
-            throw new Exception("El correo "+usuarioDTO.getEmail()+" ya está en uso");
+    public int crearUsuario(UsuarioDTO usuarioDTO) throws Exception {
+        if(!estaDisponible(c.getEmail())){
+            throw new AttributeException("El correo "+c.getEmail()+" ya está en uso");
         }
-
-        Usuario usuario = convertir(usuarioDTO);
-        return usuarioRepo.save( usuario ).getCedula();
+        Usuario cliente = new Usuario();
+        cliente.setNombre( usuarioDTO.getNombre() );
+        cliente.setEmail( usuarioDTO.getEmail());
+        cliente.setDireccion( usuarioDTO.getDireccion() );
+        cliente.setTelefono( usuarioDTO.getTelefono() );
+        cliente.setPassword( usuarioDTO.encode(usuarioDTO.getPassword()) );
+        return usuarioRepo.save( cliente ).getCedula();
     }
 
     @Override
@@ -65,6 +77,15 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         return usuario.get();
     }
 
+    @Override
+    public List<UsuarioGetDTO> listarTodos() {
+        List<UsuarioGetDTO> convertidos= new ArrayList<>();
+        for (Usuario usuario : usuarioRepo.findAll()) {
+            convertidos.add(convertir(usuario));
+        }
+        return convertidos;
+    }
+
     private void validarExiste(int codigoUsuario) throws Exception{
         boolean existe = usuarioRepo.existsById(codigoUsuario);
 
@@ -73,6 +94,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         }
 
     }
+
 
     private UsuarioGetDTO convertir(Usuario usuario){
 
@@ -96,6 +118,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         usuario.setTelefono( usuarioDTO.getTelefono() );
         usuario.setPassword( usuarioDTO.getPassword() );
         usuario.setCiudad( usuarioDTO.getCiudad());
+        usuario.setEstado(Estado.INACTIVO);
 
         return usuario;
     }

@@ -4,8 +4,9 @@ import co.edu.uniquindio.unimarket.dto.UsuarioDTO;
 import co.edu.uniquindio.unimarket.dto.UsuarioGetDTO;
 import co.edu.uniquindio.unimarket.modelo.Usuario;
 
-public interface UsuarioServicio {
+import java.util.List;
 
+public interface UsuarioServicio {
 
     int crearUsuario(UsuarioDTO usuarioDTO)  throws Exception;
 
@@ -16,5 +17,6 @@ public interface UsuarioServicio {
     UsuarioGetDTO obtenerUsuario(int codigoUsuario) throws Exception;
 
     Usuario obtener(int codigoUsuario) throws Exception;
+     List<UsuarioGetDTO> listarTodos();
 
 }
