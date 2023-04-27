@@ -81,7 +81,7 @@ public class ProductoServicioImpl implements ProductoServicio {
     private ProductoGetDTO convertir(Producto producto){
 
         ProductoGetDTO productoGetDTO = new ProductoGetDTO(
-                producto.getCodigo(), producto.getEstado(),producto.getFechaLimite(),
+                producto.getCodigo(),producto.getFechaLimite(),
                 producto.getNombre(), producto.getDescripcion(), producto.getUnidades(),
                 producto.getPrecio(),producto.getVendedor().getCedula(),producto.getImagen(),
                 producto.getCategoria()

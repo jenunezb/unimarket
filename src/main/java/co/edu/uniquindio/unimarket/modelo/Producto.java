@@ -34,10 +34,7 @@ public class Producto implements Serializable {
 
     @Column(nullable = false)
     private float precio;
-
-    @Enumerated(EnumType.STRING)
-    private Estado estado;
-
+    
     @Enumerated(EnumType.STRING)
     @ElementCollection
     private List<Categoria> categoria;
@@ -70,12 +67,11 @@ public class Producto implements Serializable {
     @OneToMany(mappedBy = "producto")
     private List<Detalle_Compra> detalle_compras;
 
-    public Producto( String nombre, int unidades, String descripcion, float precio, Estado estado, List<Categoria> categoria, LocalDateTime fechaCreacion, LocalDateTime fechaLimite, Activo activo) {
+    public Producto( String nombre, int unidades, String descripcion, float precio, List<Categoria> categoria, LocalDateTime fechaCreacion, LocalDateTime fechaLimite, Activo activo) {
         this.nombre = nombre;
         this.unidades = unidades;
         this.descripcion = descripcion;
         this.precio = precio;
-        this.estado = estado;
         this.categoria = categoria;
         this.fechaCreacion = fechaCreacion;
         this.fechaLimite = fechaLimite;

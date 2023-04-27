@@ -1,8 +1,7 @@
 package co.edu.uniquindio.unimarket.controladores;
 
-import co.edu.uniquindio.unimarket.dto.MensajeDTO;
+import co.edu.uniquindio.unimarket.modelo.dto.MensajeDTO;
 import co.edu.uniquindio.unimarket.dto.ModeradorDTO;
-import co.edu.uniquindio.unimarket.dto.UsuarioDTO;
 import co.edu.uniquindio.unimarket.servicios.interfaces.ModeradorServicio;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -21,6 +20,5 @@ public class ModeradorControlador {
 
     @PostMapping("/crear")
     public ResponseEntity<MensajeDTO> crearModerador(@RequestBody ModeradorDTO moderadorDTO) throws Exception {
-        return ResponseEntity.status(HttpStatus.CREATED).body( new MensajeDTO("Moderador creado exitosamente",  moderadorServicio.crearModerador(moderadorDTO)) );
-    }
+        return ResponseEntity.status(HttpStatus.CREATED).body( new MensajeDTO(HttpStatus.CREATED, false, moderadorServicio.crearModerador(moderadorDTO)));    }
 }

@@ -17,8 +17,6 @@ public class ProductoGetDTO {
 
     private int codigo;
 
-    private Estado estado;
-
     private LocalDateTime fechaLimite;
 
     private String nombre;

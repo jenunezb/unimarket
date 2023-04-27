@@ -15,13 +15,9 @@ import org.hibernate.validator.constraints.Length;
 public class UsuarioDTO {
 
     @NotNull
-    @NotBlank
-    @Length(max = 12, message = "El teléfono debe tener máximo 12 caracteres")
     private Ciudad ciudad;
 
     @NotNull
-    @NotBlank
-    @Length(max = 150, message = "El nombre debe tener máximo 100 caracteres")
     private Integer cedula;
 
     @NotNull

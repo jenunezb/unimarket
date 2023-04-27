@@ -20,6 +20,6 @@ public class ProductoControlador {
 
     @PostMapping("/crear")
     public ResponseEntity<MensajeDTO> crearProducto(@RequestBody ProductoDTO productoDTO) throws Exception{
-        return ResponseEntity.status(HttpStatus.CREATED).body( new MensajeDTO("Producto creado exitosamente", productoServicio.crearProducto(productoDTO)) );
+        return ResponseEntity.status(HttpStatus.CREATED).body( new MensajeDTO(HttpStatus.CREATED, false, productoServicio.crearProducto(productoDTO)) );
     }
 }

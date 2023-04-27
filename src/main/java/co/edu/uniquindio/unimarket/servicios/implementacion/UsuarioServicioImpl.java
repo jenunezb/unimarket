@@ -38,6 +38,8 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         cliente.setDireccion( c.getDireccion() );
         cliente.setTelefono( c.getTelefono() );
         cliente.setPassword( passwordEncoder.encode(c.getPassword()) );
+        cliente.setCiudad(c.getCiudad());
+        cliente.setEstado(Estado.INACTIVO);
         return usuarioRepo.save( cliente ).getCedula();
     }
 
@@ -105,6 +107,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
                 usuario.getEmail(),
                 usuario.getDireccion(),
                 usuario.getTelefono());
+                usuario.getCiudad();
 
         return usuarioDTO;
     }

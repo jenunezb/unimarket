@@ -1,5 +1,6 @@
 package co.edu.uniquindio.unimarket;
 
+import co.edu.uniquindio.unimarket.modelo.Activo;
 import co.edu.uniquindio.unimarket.modelo.Categoria;
 import co.edu.uniquindio.unimarket.modelo.Estado;
 import co.edu.uniquindio.unimarket.modelo.Producto;
@@ -12,6 +13,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.jdbc.Sql;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 @DataJpaTest
@@ -22,9 +25,9 @@ public class ProductoTest {
     private ProductoRepo productoRepo;
 
     @Test
-    @Sql("classpath:dataset.sql")
     public void registrar(){
-        Producto producto = new Producto("nombre", 5, "descripcion", 2500, Estado.INACTIVO, Categoria.ROPA, LocalDate.now(),LocalDate.now());
+        List<Categoria> categorias = Arrays.asList(Categoria.ELECTRONICA, Categoria.HOGAR);
+        Producto producto = new Producto("s",1,"desc",2500, categorias, LocalDateTime.now(),LocalDateTime.now(), Activo.INACTIVO);
         Producto productoGuardado = productoRepo.save(producto);
         Assertions.assertNotNull(productoGuardado);
     }
