@@ -14,11 +14,11 @@ public class CloudinaryServicioImpl implements CloudinaryServicio {
 
     private final Cloudinary cloudinary;
 
-    public CloudinaryServicio(){
+    public CloudinaryServicioImpl(){
         Map<String, String> config = new HashMap<>();
-        config.put("cloud_name", "SU_CLOUD_NAME");
-        config.put("api_key", "SU_API_KEY");
-        config.put("api_secret", "SU_API_SECRET");
+        config.put("cloud_name", "dl2h9wlm3");
+        config.put("api_key", "145922535687464");
+        config.put("api_secret", "y-ERrv3N_tpHMLvHYlNiRhnBUUs");
         cloudinary = new Cloudinary(config);
     }
     @Override

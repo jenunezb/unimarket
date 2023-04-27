@@ -5,13 +5,14 @@ import co.edu.uniquindio.unimarket.dto.UsuarioGetDTO;
 import co.edu.uniquindio.unimarket.modelo.Estado;
 import co.edu.uniquindio.unimarket.modelo.Usuario;
 import co.edu.uniquindio.unimarket.repositorios.UsuarioRepo;
+import co.edu.uniquindio.unimarket.servicios.excepciones.AttributeException;
 import co.edu.uniquindio.unimarket.servicios.interfaces.UsuarioServicio;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.print.AttributeException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -27,16 +28,16 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 
 
     @Override
-    public int crearUsuario(UsuarioDTO usuarioDTO) throws Exception {
+    public int crearUsuario(UsuarioDTO c) throws Exception {
         if(!estaDisponible(c.getEmail())){
             throw new AttributeException("El correo "+c.getEmail()+" ya está en uso");
         }
         Usuario cliente = new Usuario();
-        cliente.setNombre( usuarioDTO.getNombre() );
-        cliente.setEmail( usuarioDTO.getEmail());
-        cliente.setDireccion( usuarioDTO.getDireccion() );
-        cliente.setTelefono( usuarioDTO.getTelefono() );
-        cliente.setPassword( usuarioDTO.encode(usuarioDTO.getPassword()) );
+        cliente.setNombre( c.getNombre() );
+        cliente.setEmail( c.getEmail());
+        cliente.setDireccion( c.getDireccion() );
+        cliente.setTelefono( c.getTelefono() );
+        cliente.setPassword( passwordEncoder.encode(c.getPassword()) );
         return usuarioRepo.save( cliente ).getCedula();
     }
 
@@ -121,6 +122,11 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         usuario.setEstado(Estado.INACTIVO);
 
         return usuario;
+    }
+
+    public boolean estaDisponible(String email) {
+        Optional<Usuario> cliente = usuarioRepo.findByEmail(email);
+        return cliente.isEmpty();
     }
 
 }
