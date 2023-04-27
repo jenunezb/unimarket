@@ -21,7 +21,7 @@ public class UsuarioControlador {
 
     @PostMapping
     public ResponseEntity<MensajeDTO> registrar(@Valid @RequestBody UsuarioDTO usuario) throws Exception {
-       return ResponseEntity.status(HttpStatus.OK).body( new MensajeDTO(HttpStatus.OK, false, usuarioServicio.crearUsuario(usuario)));
+       return ResponseEntity.status(HttpStatus.OK).body( new MensajeDTO(HttpStatus.OK, false,usuarioServicio.crearUsuario(usuario)+" usuario "+usuario.getNombre()+" Creado exitosamente"));
     }
 
     @PutMapping("/actualizar/{codigoUsuario}")

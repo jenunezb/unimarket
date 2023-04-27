@@ -32,7 +32,11 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         if(!estaDisponible(c.getEmail())){
             throw new AttributeException("El correo "+c.getEmail()+" ya está en uso");
         }
+        if(!validarId(c.getCedula())){
+            throw new AttributeException("La cédula "+c.getCedula()+" ya está en uso");
+        }
         Usuario cliente = new Usuario();
+        cliente.setCedula(c.getCedula());
         cliente.setNombre( c.getNombre() );
         cliente.setEmail( c.getEmail());
         cliente.setDireccion( c.getDireccion() );
@@ -130,6 +134,13 @@ public class UsuarioServicioImpl implements UsuarioServicio {
     public boolean estaDisponible(String email) {
         Optional<Usuario> cliente = usuarioRepo.findByEmail(email);
         return cliente.isEmpty();
+    }
+
+    public boolean validarId(int id){
+        if(usuarioRepo.findById(id).isEmpty()){
+            return true;
+        }
+        return false;
     }
 
 }
