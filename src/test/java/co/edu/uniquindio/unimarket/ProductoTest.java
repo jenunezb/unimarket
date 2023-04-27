@@ -25,6 +25,7 @@ public class ProductoTest {
     private ProductoRepo productoRepo;
 
     @Test
+    @Sql("classpath:dataset.sql")
     public void registrar(){
         List<Categoria> categorias = Arrays.asList(Categoria.ELECTRONICA, Categoria.HOGAR);
         Producto producto = new Producto("s",1,"desc",2500, categorias, LocalDateTime.now(),LocalDateTime.now(), Activo.INACTIVO);
@@ -40,13 +41,12 @@ public class ProductoTest {
             Assertions.assertNotNull(productos);
     }
 
-    /**@Test
+    @Test
     @Sql("classpath:dataset.sql")
     public void buscar(){
-        List<Producto> productoBuscado = productoRepo.listarProductosUsuario("085");
+        List<Producto> productoBuscado = productoRepo.listarProductosUsuario(001);
         Assertions.assertNotNull(productoBuscado);
     }
-     **/
 
     @Test
     @Sql("classpath:dataset.sql")
