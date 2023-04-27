@@ -7,12 +7,13 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface UsuarioRepo extends JpaRepository<Usuario, Integer> {
 
     @Query("select u from Usuario u where u.email = :email")
-    Usuario buscarUsuario( @Param("email") String email);
+   Optional <Usuario> findByEmail(@Param("email") String email);
 
     @Query("select u from Usuario u")
     List<Usuario> listarUsuarios();
