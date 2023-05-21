@@ -21,7 +21,7 @@ public class ProductoControlador {
     }
 
     @GetMapping("/listar")
-    public ResponseEntity<MensajeDTO>listarProductos()throws Exception{
+    public ResponseEntity<MensajeDTO>listarProductos(){
         return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK,false, productoServicio.listarProductos()));
     }
 }

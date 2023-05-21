@@ -1,7 +1,7 @@
 package co.edu.uniquindio.unimarket.servicios.implementacion;
 
-import co.edu.uniquindio.unimarket.modelo.dto.SesionDTO;
-import co.edu.uniquindio.unimarket.modelo.dto.TokenDTO;
+import co.edu.uniquindio.unimarket.dto.SesionDTO;
+import co.edu.uniquindio.unimarket.dto.TokenDTO;
 import co.edu.uniquindio.unimarket.seguridad.modelo.UserDetailsImpl;
 import co.edu.uniquindio.unimarket.seguridad.servicios.JwtService;
 import co.edu.uniquindio.unimarket.servicios.interfaces.SesionServicio;
@@ -22,7 +22,7 @@ public class SesionServicioImpl implements SesionServicio {
     private final AuthenticationManager authenticationManager;
 
     @Override
-    public TokenDTO login(SesionDTO sesionDTO) {
+    public TokenDTO login(SesionDTO sesionDTO) throws Exception {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         sesionDTO.getEmail(),
