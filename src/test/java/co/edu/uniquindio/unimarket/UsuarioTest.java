@@ -59,7 +59,7 @@ public class UsuarioTest {
         int codigo = usuarioServicio.crearUsuario(usuarioDTO);
 
         //Una vez creado, lo borramos
-        int codigoBorrado = usuarioServicio.eliminiarUsuario(codigo);
+        int codigoBorrado = usuarioServicio.eliminarUsuario(codigo);
 
         //Si intentamos buscar un usuario con el codigo del usuario borrado debemos obtener una excepción indicando que ya no existe
         Assertions.assertThrows(Exception.class, () -> usuarioServicio.obtenerUsuario(codigoBorrado));

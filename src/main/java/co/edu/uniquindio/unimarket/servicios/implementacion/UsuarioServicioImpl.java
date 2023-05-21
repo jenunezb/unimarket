@@ -1,14 +1,15 @@
 package co.edu.uniquindio.unimarket.servicios.implementacion;
 
+import co.edu.uniquindio.unimarket.dto.EmailDTO;
 import co.edu.uniquindio.unimarket.dto.UsuarioDTO;
 import co.edu.uniquindio.unimarket.dto.UsuarioGetDTO;
 import co.edu.uniquindio.unimarket.modelo.Estado;
 import co.edu.uniquindio.unimarket.modelo.Usuario;
 import co.edu.uniquindio.unimarket.repositorios.UsuarioRepo;
 import co.edu.uniquindio.unimarket.servicios.excepciones.AttributeException;
+import co.edu.uniquindio.unimarket.servicios.interfaces.EmailServicio;
 import co.edu.uniquindio.unimarket.servicios.interfaces.UsuarioServicio;
 import lombok.AllArgsConstructor;
-import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,7 @@ import java.util.Optional;
 public class UsuarioServicioImpl implements UsuarioServicio {
 
     private final UsuarioRepo usuarioRepo;
+    private final EmailServicio emailServicio;
 
     @Autowired
     private final PasswordEncoder passwordEncoder;
@@ -45,6 +47,12 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         cliente.setPassword( passwordEncoder.encode(c.getPassword()) );
         cliente.setCiudad(c.getCiudad());
         cliente.setEstado(Estado.INACTIVO);
+
+   /*     emailServicio.enviarEmail(new EmailDTO(
+                "Creación de cuenta en Unimarket",
+                "Su cuenta ha sido creada exitosamente",
+                c.getEmail()));*/
+
         return usuarioRepo.save( cliente ).getCedula();
     }
 
@@ -64,10 +72,14 @@ public class UsuarioServicioImpl implements UsuarioServicio {
     }
 
     @Override
-    public int eliminiarUsuario(int codigoUsuario) throws Exception{
-        validarExiste(codigoUsuario);
-        usuarioRepo.deleteById(codigoUsuario);
-        return codigoUsuario;
+    public int eliminarUsuario(int codigo) throws Exception {
+        Optional<Usuario> usuarioOptional = usuarioRepo.findById(codigo);
+        if (usuarioOptional.isEmpty()) {
+            throw new Exception("El código " + codigo + " no está asociado a ningún cliente");
+        }
+        Usuario usuario = usuarioOptional.get();
+        usuarioRepo.delete(usuario);
+        return codigo;
     }
 
     @Override

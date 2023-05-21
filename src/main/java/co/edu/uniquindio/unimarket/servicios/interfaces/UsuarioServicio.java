@@ -12,7 +12,7 @@ public interface UsuarioServicio {
 
     UsuarioGetDTO actualizarUsuario(int codigoUsuario, UsuarioDTO usuarioDTO) throws Exception;
 
-    int eliminiarUsuario(int codigoUsuario) throws Exception;
+    int eliminarUsuario(int codigoUsuario) throws Exception;
 
     UsuarioGetDTO obtenerUsuario(int codigoUsuario) throws Exception;
 
