@@ -18,8 +18,9 @@ public class AuthController {
 
  private final ModeradorServicio moderadorServicio;
 
- @PostMapping("/registro")
+ @PostMapping("/login")
  public ResponseEntity<MensajeDTO> iniciar() throws Exception{
   return ResponseEntity.status(HttpStatus.OK).body( new co.edu.uniquindio.unimarket.dto.MensajeDTO(HttpStatus.OK, false," Entra"));
  }
+
 }

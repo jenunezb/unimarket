@@ -51,7 +51,7 @@ public class UsuarioTest {
                 Ciudad.BARRANQUILLA,
                 1254,
                 "1234",
-                "Calle 123",
+                "Calle@gmial.com",
                 "343",
                 "Barrio tal",
                 "5481565");

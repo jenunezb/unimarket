@@ -8,6 +8,7 @@ import co.edu.uniquindio.unimarket.repositorios.UsuarioRepo;
 import co.edu.uniquindio.unimarket.servicios.excepciones.AttributeException;
 import co.edu.uniquindio.unimarket.servicios.interfaces.UsuarioServicio;
 import lombok.AllArgsConstructor;
+import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+
 @Service
 @AllArgsConstructor
 public class UsuarioServicioImpl implements UsuarioServicio {
@@ -25,7 +27,6 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 
     @Autowired
     private final PasswordEncoder passwordEncoder;
-
 
     @Override
     public int crearUsuario(UsuarioDTO c) throws Exception {
