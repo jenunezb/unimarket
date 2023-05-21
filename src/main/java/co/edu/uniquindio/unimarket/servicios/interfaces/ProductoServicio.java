@@ -34,4 +34,5 @@ public interface ProductoServicio {
 
     List<ProductoGetDTO> listarProductosPrecio(float precioMinimo, float precioMaximo);
 
+    List<ProductoGetDTO> listarProductos();
 }

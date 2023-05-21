@@ -1,5 +1,6 @@
 package co.edu.uniquindio.unimarket.modelo;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 

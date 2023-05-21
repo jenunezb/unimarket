@@ -23,7 +23,11 @@ public class WebSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.cors();
+
+        /*Aquí vienen las autorizaciones de las peticiones realizadas*/
         http.authorizeHttpRequests().anyRequest().permitAll();
+
+
         http.exceptionHandling().authenticationEntryPoint(jwtEntryPoint);
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authenticationProvider(authenticationProvider);
