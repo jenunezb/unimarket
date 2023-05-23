@@ -24,4 +24,16 @@ public class ProductoControlador {
     public ResponseEntity<MensajeDTO>listarProductos(){
         return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK,false, productoServicio.listarProductos()));
     }
+
+    @DeleteMapping("/{codigoProducto}")
+    public  ResponseEntity<MensajeDTO>eliminarProducto(@PathVariable Integer codigoProducto){
+        try{
+            productoServicio.eliminarProducto(codigoProducto);
+            return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK,false, "producto eliminado exitosamente"));
+
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new MensajeDTO(HttpStatus.INTERNAL_SERVER_ERROR, true, "El producto no existe"));
+        }
+    }
+
 }

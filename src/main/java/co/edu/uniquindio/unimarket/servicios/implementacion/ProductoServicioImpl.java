@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -56,8 +57,17 @@ public class ProductoServicioImpl implements ProductoServicio {
     }
 
     @Override
-    public int eliminarProducto(int codigoProducto) throws Exception{
-        return 0;
+    public void eliminarProducto(Integer codigoProducto) throws Exception{
+        if (codigoProducto != null) {
+            Optional<Producto> productoOptional = productoRepo.findById(codigoProducto);
+            if (productoOptional.isPresent()) {
+                productoRepo.deleteById(codigoProducto);
+            } else {
+                throw new Exception("El producto no existe");
+            }
+        } else {
+            throw new IllegalArgumentException("El código del producto no puede ser nulo");
+        }
     }
 
     @Override

@@ -18,7 +18,7 @@ public interface ProductoServicio {
 
     int actualizarEstado(int codigoProducto, Estado estado) throws Exception;
 
-    int eliminarProducto(int codigoProducto) throws Exception;
+    void eliminarProducto(Integer codigoProducto) throws Exception;
 
     ProductoGetDTO obtenerProducto(int codigoProducto) throws Exception;
 

@@ -36,8 +36,10 @@ public class ProductoDTO {
     @Positive
     private int codigoVendedor;
 
+    @NotNull
     private List<Imagen> imagenes;
 
+    @NotNull
     private List<Categoria> categoria;
 
 }

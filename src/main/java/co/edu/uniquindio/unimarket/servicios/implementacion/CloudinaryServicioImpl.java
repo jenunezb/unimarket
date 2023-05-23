@@ -25,6 +25,7 @@ public class CloudinaryServicioImpl implements CloudinaryServicio {
     public Map subirImagen(File file, String carpeta) throws Exception{
         return cloudinary.uploader().upload(file, ObjectUtils.asMap("folder",
                 String.format("uniquindio/proyecto/%s", carpeta)));
+
     }
     @Override
     public Map eliminarImagen(String idImagen) throws Exception{
@@ -33,6 +34,7 @@ public class CloudinaryServicioImpl implements CloudinaryServicio {
     @Override
     public File convertir(MultipartFile imagen) throws IOException {
         File file = File.createTempFile(imagen.getOriginalFilename(), null);
+        System.out.println(imagen.getOriginalFilename());
         FileOutputStream fos = new FileOutputStream(file);
         fos.write(imagen.getBytes());
         fos.close();

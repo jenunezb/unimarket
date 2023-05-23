@@ -55,9 +55,11 @@ public class Producto implements Serializable {
     @OneToMany(mappedBy = "producto")
     private List<Comentario> comentarios;
 
+    @Column(nullable = false)
     @OneToMany(mappedBy = "producto")
     private List<Imagen> imagen;
 
+    @Column(nullable = false)
     @OneToMany(mappedBy = "producto")
     private List<Favorito> favoritos;
 
