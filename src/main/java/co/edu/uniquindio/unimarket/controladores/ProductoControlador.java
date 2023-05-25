@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/producto")
@@ -14,10 +15,14 @@ import org.springframework.web.bind.annotation.*;
 public class ProductoControlador {
 
     private final ProductoServicio productoServicio;
+    private final ImagenController imagenController;
 
     @PostMapping("/crear")
     public ResponseEntity<MensajeDTO> crearProducto(@RequestBody ProductoDTO productoDTO) throws Exception{
-        return ResponseEntity.status(HttpStatus.CREATED).body( new MensajeDTO(HttpStatus.CREATED, false, productoServicio.crearProducto(productoDTO)) );
+        productoServicio.crearProducto(productoDTO);
+        productoDTO.setImagenes(imagenController.url);
+        return ResponseEntity.status(HttpStatus.CREATED).body( new MensajeDTO(HttpStatus.CREATED, false,
+                "el producto "+productoDTO.getNombre()+" se creo exitosamente") );
     }
 
     @GetMapping("/listar")

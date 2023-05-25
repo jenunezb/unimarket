@@ -2,10 +2,7 @@ package co.edu.uniquindio.unimarket.servicios.implementacion;
 
 import co.edu.uniquindio.unimarket.dto.ProductoDTO;
 import co.edu.uniquindio.unimarket.dto.ProductoGetDTO;
-import co.edu.uniquindio.unimarket.modelo.Activo;
-import co.edu.uniquindio.unimarket.modelo.Categoria;
-import co.edu.uniquindio.unimarket.modelo.Estado;
-import co.edu.uniquindio.unimarket.modelo.Producto;
+import co.edu.uniquindio.unimarket.modelo.*;
 import co.edu.uniquindio.unimarket.repositorios.ProductoRepo;
 import co.edu.uniquindio.unimarket.servicios.interfaces.ProductoServicio;
 import co.edu.uniquindio.unimarket.servicios.interfaces.UsuarioServicio;
@@ -13,6 +10,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,12 +25,13 @@ public class ProductoServicioImpl implements ProductoServicio {
     public int crearProducto(ProductoDTO productoDTO) throws Exception {
 
         Producto producto = new Producto();
+
         producto.setNombre( productoDTO.getNombre() );
         producto.setDescripcion( productoDTO.getDescripcion() );
         producto.setUnidades( productoDTO.getUnidades() );
         producto.setPrecio( productoDTO.getPrecio() );
         producto.setVendedor( usuarioServicio.obtener( productoDTO.getCodigoVendedor() ) );
-        producto.setImagen( productoDTO.getImagenes() );
+        producto.setImagenes( productoDTO.getImagenes() );
         producto.setCategoria( productoDTO.getCategoria() );
         producto.setActivo( Activo.INACTIVO );
         producto.setFechaCreacion( LocalDateTime.now() );
@@ -93,7 +92,7 @@ public class ProductoServicioImpl implements ProductoServicio {
         ProductoGetDTO productoGetDTO = new ProductoGetDTO(
                 producto.getCodigo(),producto.getFechaLimite(),
                 producto.getNombre(), producto.getDescripcion(), producto.getUnidades(),
-                producto.getPrecio(),producto.getVendedor().getCedula(),producto.getImagen(),
+                producto.getPrecio(),producto.getVendedor().getCedula(),producto.getImagenes(),
                 producto.getCategoria()
         );
 

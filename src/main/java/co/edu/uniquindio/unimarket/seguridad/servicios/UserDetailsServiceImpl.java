@@ -18,6 +18,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private UsuarioRepo clienteRepo;
     @Autowired
     private ModeradorRepo adminRepo;
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Optional<Usuario> cliente = clienteRepo.findByEmail(email);

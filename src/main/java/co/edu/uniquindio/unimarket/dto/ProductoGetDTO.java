@@ -1,8 +1,6 @@
 package co.edu.uniquindio.unimarket.dto;
 
 import co.edu.uniquindio.unimarket.modelo.Categoria;
-import co.edu.uniquindio.unimarket.modelo.Estado;
-import co.edu.uniquindio.unimarket.modelo.Imagen;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,7 +27,7 @@ public class ProductoGetDTO {
 
     private int codigoVendedor;
 
-    private List<Imagen> imagenes;
+    private List<String> imagenes;
 
     private List<Categoria> categorias;
 }

@@ -1,6 +1,7 @@
 package co.edu.uniquindio.unimarket.modelo;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
 
@@ -55,9 +56,9 @@ public class Producto implements Serializable {
     @OneToMany(mappedBy = "producto")
     private List<Comentario> comentarios;
 
-    @Column(nullable = false)
-    @OneToMany(mappedBy = "producto")
-    private List<Imagen> imagen;
+    @ElementCollection
+    @NotNull
+    private List<String> imagenes;
 
     @Column(nullable = false)
     @OneToMany(mappedBy = "producto")

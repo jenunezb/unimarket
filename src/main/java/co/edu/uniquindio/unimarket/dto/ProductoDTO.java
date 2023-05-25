@@ -1,7 +1,6 @@
 package co.edu.uniquindio.unimarket.dto;
 
 import co.edu.uniquindio.unimarket.modelo.Categoria;
-import co.edu.uniquindio.unimarket.modelo.Imagen;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -10,8 +9,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
+
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @AllArgsConstructor
 @Getter
@@ -37,9 +37,8 @@ public class ProductoDTO {
     private int codigoVendedor;
 
     @NotNull
-    private List<Imagen> imagenes;
+    private List<String> imagenes;
 
     @NotNull
     private List<Categoria> categoria;
-
 }
