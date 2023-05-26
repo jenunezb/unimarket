@@ -1,5 +1,6 @@
 package co.edu.uniquindio.unimarket.controladores;
 
+import co.edu.uniquindio.unimarket.modelo.Ciudad;
 import co.edu.uniquindio.unimarket.modelo.dto.MensajeDTO;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -21,7 +22,8 @@ public class UsuarioControlador {
 
     @PostMapping
     public ResponseEntity<MensajeDTO> registrar(@Valid @RequestBody UsuarioDTO usuario) throws Exception {
-       return ResponseEntity.status(HttpStatus.OK).body( new MensajeDTO(HttpStatus.OK, false,usuarioServicio.crearUsuario(usuario)+" usuario "+usuario.getNombre()+" Creado exitosamente"));
+        usuarioServicio.crearUsuario(usuario);
+       return ResponseEntity.status(HttpStatus.OK).body( new MensajeDTO(HttpStatus.OK, false," usuario "+usuario.getNombre()+" Creado exitosamente"));
     }
 
     @PutMapping("/actualizar/{codigoUsuario}")
@@ -46,6 +48,11 @@ public class UsuarioControlador {
     public List<UsuarioGetDTO> listar()
     {
         return  usuarioServicio.listarTodos();
+    }
+
+    @GetMapping("/ciudades")
+    public ResponseEntity<Ciudad[]> getCiudades() {
+        return ResponseEntity.status(HttpStatus.OK).body( Ciudad.values());
     }
 
 }

@@ -48,9 +48,11 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         cliente.setCiudad(c.getCiudad());
         cliente.setEstado(Estado.INACTIVO);
 
-   /*     emailServicio.enviarEmail(new EmailDTO(
+        /*emailServicio.enviarEmail(new EmailDTO(
                 "Creación de cuenta en Unimarket",
-                "Su cuenta ha sido creada exitosamente",
+                "Su cuenta ha sido creada exitosamente, debe esperar a que un" +
+                        " moderador acepte su registro en unos minutos podrá " +
+                        "acceder a su cuenta",
                 c.getEmail()));*/
 
         return usuarioRepo.save( cliente ).getCedula();
