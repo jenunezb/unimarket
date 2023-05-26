@@ -7,7 +7,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/producto")
@@ -39,6 +38,11 @@ public class ProductoControlador {
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new MensajeDTO(HttpStatus.INTERNAL_SERVER_ERROR, true, "El producto no existe"));
         }
+    }
+
+    @GetMapping("/{codigoProducto}")
+    public ResponseEntity<MensajeDTO> obtenerProducto(@PathVariable Integer codigoProducto) throws Exception{
+        return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK,false, productoServicio.obtenerProducto(codigoProducto)));
     }
 
 }

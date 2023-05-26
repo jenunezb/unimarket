@@ -71,7 +71,12 @@ public class ProductoServicioImpl implements ProductoServicio {
 
     @Override
     public ProductoGetDTO obtenerProducto(int codigoProducto) throws Exception{
-        return null;
+        Optional<Producto> productoOptional = productoRepo.findById(codigoProducto);
+        if (productoOptional.isPresent()) {
+            return convertir(productoOptional.get());
+        } else {
+            throw new Exception("El producto con el código " + codigoProducto + " no fue encontrado");
+        }
     }
 
     @Override
