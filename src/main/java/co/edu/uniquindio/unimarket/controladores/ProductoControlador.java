@@ -56,4 +56,9 @@ public class ProductoControlador {
         System.out.println(nombreProducto);
         return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK,false, productoServicio.listarProductosNombre(nombreProducto)));
     }
+
+    @GetMapping("misproductos/{codigoUsuario}")
+    public ResponseEntity<MensajeDTO> listarProductosUsuario(@PathVariable Integer codigoUsuario) throws Exception{
+        return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK,false, productoServicio.listarProductosUsuario(codigoUsuario)));
+    }
 }

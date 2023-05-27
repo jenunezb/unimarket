@@ -1,6 +1,7 @@
 package co.edu.uniquindio.unimarket.dto;
 
 import co.edu.uniquindio.unimarket.modelo.Categoria;
+import co.edu.uniquindio.unimarket.modelo.Ciudad;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

@@ -1,5 +1,6 @@
 package co.edu.uniquindio.unimarket.dto;
 
+import co.edu.uniquindio.unimarket.modelo.Ciudad;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,5 +21,7 @@ public class UsuarioGetDTO {
     private String direccion;
 
     private String telefono;
+
+    private Ciudad ciudad;
 
 }
