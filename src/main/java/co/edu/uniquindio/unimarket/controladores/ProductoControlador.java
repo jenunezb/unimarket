@@ -2,6 +2,8 @@ package co.edu.uniquindio.unimarket.controladores;
 
 import co.edu.uniquindio.unimarket.dto.MensajeDTO;
 import co.edu.uniquindio.unimarket.dto.ProductoDTO;
+import co.edu.uniquindio.unimarket.modelo.Categoria;
+import co.edu.uniquindio.unimarket.modelo.Ciudad;
 import co.edu.uniquindio.unimarket.servicios.interfaces.ProductoServicio;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -43,6 +45,11 @@ public class ProductoControlador {
     @GetMapping("/{codigoProducto}")
     public ResponseEntity<MensajeDTO> obtenerProducto(@PathVariable Integer codigoProducto) throws Exception{
         return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK,false, productoServicio.obtenerProducto(codigoProducto)));
+    }
+
+    @GetMapping("/categorias")
+    public ResponseEntity<Categoria[]> getCategorias() {
+        return ResponseEntity.status(HttpStatus.OK).body( Categoria.values());
     }
 
 }
