@@ -13,7 +13,7 @@ public interface ProductoRepo extends JpaRepository<Producto, Integer> {
     @Query("select p from Producto p where p.vendedor.cedula = :codigoUsuario")
     List<Producto> listarProductosUsuario(int codigoUsuario);
 
-    @Query("select p from Producto p where p.nombre like concat( '%', :nombre, '%' ) and p.activo = 'ACTIVO'")
+    @Query("select p from Producto p where p.nombre like concat( '%', :nombre, '%' )")
     List<Producto> listarProductosNombre(String nombre);
 
     @Query("select p from Producto p")

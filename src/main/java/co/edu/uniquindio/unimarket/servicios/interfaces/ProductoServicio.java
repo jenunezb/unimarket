@@ -30,7 +30,7 @@ public interface ProductoServicio {
 
     List<ProductoGetDTO> listarProductosFavoritos(int codigoUsuario);
 
-    List<ProductoGetDTO> listarProductosNombre(String nombre);
+    List<ProductoGetDTO> listarProductosNombre(String nombreProducto);
 
     List<ProductoGetDTO> listarProductosPrecio(float precioMinimo, float precioMaximo);
 
