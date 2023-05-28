@@ -19,4 +19,6 @@ public interface UsuarioServicio {
     Usuario obtener(int codigoUsuario) throws Exception;
      List<UsuarioGetDTO> listarTodos();
 
+    int cedulaUsuario(String cedulaUsuario)throws Exception;
+
 }

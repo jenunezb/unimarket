@@ -32,7 +32,6 @@ public class JwtService {
         List<String> roles =
                 userDetails.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList());
         extraClaims.put("roles", roles);
-        //extraClaims.put("sub_code", userDetails.getCodigo());
         return Jwts
                 .builder()
                 .setClaims(extraClaims)

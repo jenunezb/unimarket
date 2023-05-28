@@ -57,8 +57,8 @@ public class ProductoControlador {
         return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK,false, productoServicio.listarProductosNombre(nombreProducto)));
     }
 
-    @GetMapping("misproductos/{codigoUsuario}")
-    public ResponseEntity<MensajeDTO> listarProductosUsuario(@PathVariable Integer codigoUsuario) throws Exception{
-        return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK,false, productoServicio.listarProductosUsuario(codigoUsuario)));
+    @GetMapping("misproductos/{correoUsuario}")
+    public ResponseEntity<MensajeDTO> listarProductosUsuario(@PathVariable String correoUsuario) throws Exception{
+        return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK,false, productoServicio.listarProductosUsuario(correoUsuario)));
     }
 }

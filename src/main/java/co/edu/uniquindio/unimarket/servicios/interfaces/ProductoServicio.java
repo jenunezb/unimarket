@@ -22,7 +22,7 @@ public interface ProductoServicio {
 
     ProductoGetDTO obtenerProducto(int codigoProducto) throws Exception;
 
-    List<ProductoGetDTO> listarProductosUsuario(int codigoUsuario);
+    List<ProductoGetDTO> listarProductosUsuario(String correoUsuario);
 
     List<ProductoGetDTO> listarProductosCategoria(Categoria categoria);
 

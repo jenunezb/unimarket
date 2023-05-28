@@ -55,4 +55,9 @@ public class UsuarioControlador {
         return ResponseEntity.status(HttpStatus.OK).body( Ciudad.values());
     }
 
+    @GetMapping("cedula/{emailUsuario}")
+    public ResponseEntity<MensajeDTO> cedulaUsuario(@PathVariable String emailUsuario) throws Exception{
+        return ResponseEntity.status(HttpStatus.OK).body( new MensajeDTO(HttpStatus.OK, false, usuarioServicio.cedulaUsuario(emailUsuario)));
+    }
+
 }
