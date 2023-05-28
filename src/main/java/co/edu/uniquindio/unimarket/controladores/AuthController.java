@@ -25,11 +25,12 @@ public class AuthController {
  @PostMapping("/login")
  public ResponseEntity<MensajeDTO> iniciar(@RequestBody SesionDTO sesionDTO) throws Exception{
   System.out.println(sesionDTO.getEmail());
-  if(sesionDTO.getEmail().equals("admin@gmail.com") && sesionDTO.getPassword().equals("1")){
-   return ResponseEntity.status(HttpStatus.OK).body( new co.edu.uniquindio.unimarket.dto.MensajeDTO(HttpStatus.OK, false,"entra"));
-  }else {
-   return ResponseEntity.status(HttpStatus.OK).body( new co.edu.uniquindio.unimarket.dto.MensajeDTO(HttpStatus.OK, false,sesionServicio.login(sesionDTO)));
+  if(sesionDTO.getEmail().equals("admin@gmail.com")){
+   sesionDTO.setEmail("juesnube@gmail.com");
+  } else if (sesionDTO.getEmail().equals("juesnube@gmail.com")) {
+   sesionDTO.setEmail("admin@gmail.com");
   }
+  return ResponseEntity.status(HttpStatus.OK).body( new co.edu.uniquindio.unimarket.dto.MensajeDTO(HttpStatus.OK, false,sesionServicio.login(sesionDTO)));
  }
  @PostMapping("/registro")
  public ResponseEntity<MensajeDTO> registrarCliente(@Valid @RequestBody UsuarioDTO cliente) throws Exception {

@@ -30,6 +30,11 @@ public class ProductoControlador {
         return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK,false, productoServicio.listarProductos()));
     }
 
+    @GetMapping("/listarMod")
+    public ResponseEntity<MensajeDTO>listarProductosModerador(){
+        return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK,false, productoServicio.listarProductosModerador()));
+    }
+
     @DeleteMapping("/{codigoProducto}")
     public  ResponseEntity<MensajeDTO>eliminarProducto(@PathVariable Integer codigoProducto){
         try{

@@ -2,6 +2,7 @@ package co.edu.uniquindio.unimarket.servicios.implementacion;
 
 import co.edu.uniquindio.unimarket.dto.ProductoDTO;
 import co.edu.uniquindio.unimarket.dto.ProductoGetDTO;
+import co.edu.uniquindio.unimarket.dto.ProductoModeradorDTO;
 import co.edu.uniquindio.unimarket.modelo.*;
 import co.edu.uniquindio.unimarket.repositorios.ProductoRepo;
 import co.edu.uniquindio.unimarket.servicios.interfaces.ProductoServicio;
@@ -104,6 +105,17 @@ public class ProductoServicioImpl implements ProductoServicio {
         return productoGetDTO;
     }
 
+    private ProductoModeradorDTO convertirParaMod(Producto producto){
+
+        ProductoModeradorDTO productoModeradorDTO = new ProductoModeradorDTO(
+                producto.getCodigo(),producto.getFechaLimite(),producto.getNombre(),
+                producto.getDescripcion(), producto.getUnidades(),
+                producto.getPrecio(),producto.getVendedor().getCedula(),producto.getImagenes(),
+                producto.getCategoria(),producto.getActivo());
+
+        return productoModeradorDTO;
+    }
+
     @Override
     public List<ProductoGetDTO> listarProductosCategoria(Categoria categoria) {
         return null;
@@ -144,6 +156,20 @@ public class ProductoServicioImpl implements ProductoServicio {
 
         return respuesta;
     }
+
+    @Override
+    public List<ProductoModeradorDTO> listarProductosModerador() {
+
+        List<Producto> lista = productoRepo.listarProductos();
+        List<ProductoModeradorDTO> respuesta = new ArrayList<>();
+
+        for(Producto p : lista){
+            respuesta.add( convertirParaMod(p) );
+        }
+
+        return respuesta;
+    }
+
 
     @Override
     public List<ProductoGetDTO> listarProductosPrecio(float precioMinimo, float precioMaximo) {

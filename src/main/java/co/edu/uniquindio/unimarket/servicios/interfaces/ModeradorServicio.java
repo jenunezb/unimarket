@@ -2,7 +2,9 @@ package co.edu.uniquindio.unimarket.servicios.interfaces;
 
 import co.edu.uniquindio.unimarket.dto.ModeradorDTO;
 import co.edu.uniquindio.unimarket.dto.ModeradorGetDTO;
+import co.edu.uniquindio.unimarket.dto.ProductoGetDTO;
 import co.edu.uniquindio.unimarket.dto.UsuarioGetDTO;
+import co.edu.uniquindio.unimarket.modelo.ProductoModerador;
 import co.edu.uniquindio.unimarket.modelo.Usuario;
 
 import java.util.List;
