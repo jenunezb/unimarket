@@ -147,7 +147,7 @@ public class ProductoServicioImpl implements ProductoServicio {
     @Override
     public List<ProductoGetDTO> listarProductos() {
 
-        List<Producto> lista = productoRepo.listarProductos();
+        List<Producto> lista = productoRepo.listarProductosUsuario();
         List<ProductoGetDTO> respuesta = new ArrayList<>();
 
         for(Producto p : lista){

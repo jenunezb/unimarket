@@ -20,4 +20,7 @@ public interface ProductoRepo extends JpaRepository<Producto, Integer> {
     @Query("select p from Producto p")
     List<Producto> listarProductos();
 
+    @Query("select p from Producto p where p.activo='ACTIVO'")
+    List<Producto> listarProductosUsuario();
+
 }
