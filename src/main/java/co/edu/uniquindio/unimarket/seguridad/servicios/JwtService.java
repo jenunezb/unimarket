@@ -1,5 +1,4 @@
 package co.edu.uniquindio.unimarket.seguridad.servicios;
-
 import java.security.Key;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
@@ -66,5 +65,4 @@ public class JwtService {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         return Keys.hmacShaKeyFor(keyBytes);
     }
-
-    }
+}

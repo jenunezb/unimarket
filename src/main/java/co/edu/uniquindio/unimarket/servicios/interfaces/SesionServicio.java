@@ -7,5 +7,4 @@ public interface SesionServicio {
 
     TokenDTO login(SesionDTO dto) throws Exception;
 
-
 }

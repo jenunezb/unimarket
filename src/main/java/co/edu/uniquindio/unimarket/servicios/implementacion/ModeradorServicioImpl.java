@@ -8,6 +8,8 @@ import co.edu.uniquindio.unimarket.modelo.Usuario;
 import co.edu.uniquindio.unimarket.repositorios.ModeradorRepo;
 import co.edu.uniquindio.unimarket.servicios.interfaces.ModeradorServicio;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,6 +18,9 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class ModeradorServicioImpl implements ModeradorServicio {
+
+    @Autowired
+    private final PasswordEncoder passwordEncoder;
 
     private final ModeradorRepo moderadorRepo;
 
@@ -45,7 +50,7 @@ public class ModeradorServicioImpl implements ModeradorServicio {
         moderador.setCedula(moderadorDTO.getCedula());
         moderador.setNombre( moderadorDTO.getNombre() );
         moderador.setEmail( moderadorDTO.getEmail() );
-        moderador.setPassword( moderadorDTO.getPassword() );
+        moderador.setPassword( passwordEncoder.encode(moderadorDTO.getPassword()) );
 
         return moderador;
     }
