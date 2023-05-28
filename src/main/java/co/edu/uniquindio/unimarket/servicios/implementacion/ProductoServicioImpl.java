@@ -146,14 +146,11 @@ public class ProductoServicioImpl implements ProductoServicio {
 
     @Override
     public List<ProductoGetDTO> listarProductos() {
-
         List<Producto> lista = productoRepo.listarProductosUsuario();
         List<ProductoGetDTO> respuesta = new ArrayList<>();
-
         for(Producto p : lista){
             respuesta.add( convertir(p) );
         }
-
         return respuesta;
     }
 
@@ -185,7 +182,6 @@ public class ProductoServicioImpl implements ProductoServicio {
 
         return respuesta;
     }
-
 
     @Override
     public List<ProductoGetDTO> listarProductosPrecio(float precioMinimo, float precioMaximo) {
