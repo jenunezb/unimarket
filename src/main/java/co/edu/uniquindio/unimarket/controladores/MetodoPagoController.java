@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class MetodoPagoController {
 
-    @GetMapping("/metodoPago")
+    @GetMapping
     public ResponseEntity<MetodoPago[]> getMetodoPago() {
         return ResponseEntity.status(HttpStatus.OK).body( MetodoPago.values());
     }
