@@ -38,4 +38,6 @@ public interface ProductoServicio {
     List<ProductoGetDTO> listarProductos();
 
     List<ProductoModeradorDTO>listarProductosModerador();
+
+    void modificarproducto(Integer codigoProducto) throws Exception;
 }

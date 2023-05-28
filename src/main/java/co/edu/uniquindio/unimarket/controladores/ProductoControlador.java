@@ -66,4 +66,10 @@ public class ProductoControlador {
     public ResponseEntity<MensajeDTO> listarProductosUsuario(@PathVariable String correoUsuario) throws Exception{
         return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK,false, productoServicio.listarProductosUsuario(correoUsuario)));
     }
+
+    @GetMapping("/estado/{codigoProducto}")
+    public ResponseEntity modificarproducto(@PathVariable Integer codigoProducto) throws Exception{
+        productoServicio.modificarproducto(codigoProducto );
+         return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK,false, "producto modificado" ));
+    }
 }

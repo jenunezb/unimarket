@@ -157,6 +157,22 @@ public class ProductoServicioImpl implements ProductoServicio {
         return respuesta;
     }
 
+    public void modificarproducto(Integer codigoProducto) throws Exception {
+        Optional<Producto> productoOptional = productoRepo.findById(codigoProducto);
+        if (productoOptional.isPresent()) {
+            Producto producto = productoOptional.get();
+            if(producto.getActivo()==Activo.INACTIVO){
+                producto.setActivo(Activo.ACTIVO);
+            }else {
+                producto.setActivo(Activo.INACTIVO);
+            }
+
+            productoRepo.save(producto);
+        } else {
+            throw new Exception("El producto con el código " + codigoProducto + " no existe");
+        }
+    }
+
     @Override
     public List<ProductoModeradorDTO> listarProductosModerador() {
 
