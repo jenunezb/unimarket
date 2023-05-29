@@ -46,5 +46,4 @@ public class AuthController {
           false, "Cliente creado correctamente"));
  }
 
-
 }
