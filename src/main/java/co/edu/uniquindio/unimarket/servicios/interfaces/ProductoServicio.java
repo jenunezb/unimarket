@@ -5,7 +5,6 @@ import co.edu.uniquindio.unimarket.dto.ProductoGetDTO;
 import co.edu.uniquindio.unimarket.dto.ProductoModeradorDTO;
 import co.edu.uniquindio.unimarket.modelo.Categoria;
 import co.edu.uniquindio.unimarket.modelo.Estado;
-import co.edu.uniquindio.unimarket.modelo.Producto;
 
 import java.util.List;
 
