@@ -43,16 +43,18 @@ public class CompraServicioImpl implements CompraServicio {
             compra.setUsuario(usuario.get());
             compra.setMetodoPago(compraDTO.getMetodoPago());
             compra.setFecha_creacion(LocalDate.now());
+            double valor_total =0.0;
 
             for (DetalleCompraDTO detalleCompraDTO: compraDTO.getDetalleCompraDTO()) {
 
                detalleCompra.setPrecio(detalleCompraDTO.getPrecio());
+               valor_total += detalleCompraDTO.getPrecio();
                detalleCompra.setUnidades(detalleCompraDTO.getUnidades());
                Optional<Producto> producto = compraRepo.findProducto(detalleCompraDTO.getCodigoProducto());
                detalleCompra.setProducto(producto.get());
                detalle_compras.add(detalleCompra);
             }
-
+            compra.setValor_total(valor_total);
             compra.setDetalle_compras(detalle_compras);
         }
 

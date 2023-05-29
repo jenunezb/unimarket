@@ -25,6 +25,7 @@ public class Compra implements Serializable {
     @Column(nullable = false)
     private double valor_total;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private MetodoPago metodoPago;
 
