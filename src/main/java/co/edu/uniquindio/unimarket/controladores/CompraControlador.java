@@ -11,10 +11,7 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/compra")
@@ -27,5 +24,11 @@ public class CompraControlador {
     public ResponseEntity<MensajeDTO> crearCompra(@Valid @RequestBody CompraDTO compra) throws Exception {
         compraServicio.crearCompra(compra);
         return ResponseEntity.status(HttpStatus.OK).body( new MensajeDTO(HttpStatus.OK, false," compra creada exitosamente"));
+    }
+
+    @GetMapping("/listar/{codigoUsuario}")
+    public ResponseEntity<MensajeDTO>listarCompras(@PathVariable Integer codigoUsuario){
+        compraServicio.listarCompras(codigoUsuario);
+        return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK,false, compraServicio.listarCompras(codigoUsuario)));
     }
 }

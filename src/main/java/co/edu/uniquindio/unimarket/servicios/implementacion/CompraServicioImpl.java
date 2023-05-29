@@ -5,10 +5,8 @@ import co.edu.uniquindio.unimarket.dto.CompraGetDTO;
 import co.edu.uniquindio.unimarket.dto.DetalleCompraDTO;
 import co.edu.uniquindio.unimarket.modelo.*;
 import co.edu.uniquindio.unimarket.repositorios.CompraRepo;
+import co.edu.uniquindio.unimarket.repositorios.DetalleCompraRepo;
 import co.edu.uniquindio.unimarket.servicios.interfaces.CompraServicio;
-import jakarta.persistence.Column;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -25,9 +23,7 @@ import java.util.Optional;
 public class CompraServicioImpl implements CompraServicio {
 
     private final CompraRepo compraRepo;
-
-    @Autowired
-    private final PasswordEncoder passwordEncoder;
+    private final DetalleCompraRepo detalleCompraRepo;
 
     @Override
     public void crearCompra(CompraDTO compraDTO) {
@@ -52,20 +48,51 @@ public class CompraServicioImpl implements CompraServicio {
                detalleCompra.setUnidades(detalleCompraDTO.getUnidades());
                Optional<Producto> producto = compraRepo.findProducto(detalleCompraDTO.getCodigoProducto());
                detalleCompra.setProducto(producto.get());
+               detalleCompra.setCompra(compra);
                detalle_compras.add(detalleCompra);
             }
             compra.setValor_total(valor_total);
+            valor_total =0.0;
             compra.setDetalle_compras(detalle_compras);
         }
-
         compraRepo.save(compra);
+        for (Detalle_Compra detalle_compra:detalle_compras) {
+            detalle_compra.setCompra(compra);
+            detalleCompraRepo.save(detalleCompra);
+        }
+
+
     }
 
 
 
     @Override
-    public List<CompraGetDTO> listarCompras(int codigoUsuario) {
-        return null;
+    public List<CompraDTO> listarCompras(int codigoUsuario) {
+        List<Compra> compras = compraRepo.listarCompras(codigoUsuario);
+        CompraDTO compraDTO = new CompraDTO();
+        List<CompraDTO> listarCompras = new ArrayList<>();
+        DetalleCompraDTO detalleCompraDTO = new DetalleCompraDTO();
+        List<DetalleCompraDTO> detalleCompraDTOS = new ArrayList<>();
+
+        for (Compra compra:   compras) {
+            int data = compra.getUsuario().getCedula();
+            compraDTO.setCodigoUsuario(data);
+            compraDTO.setMetodoPago(compra.getMetodoPago());
+
+            for (Detalle_Compra detalleCompra: compra.getDetalle_compras()) {
+            detalleCompraDTO.setCodigoProducto(detalleCompra.getProducto().getCodigo());
+            detalleCompraDTO.setPrecio((float) detalleCompra.getPrecio());
+            detalleCompraDTO.setUnidades(detalleCompra.getUnidades());
+            detalleCompraDTOS.add(detalleCompraDTO);
+            }
+
+
+            compraDTO.setDetalleCompraDTO(detalleCompraDTOS);
+            listarCompras.add(compraDTO);
+
+        }
+
+        return listarCompras;
     }
 
     @Override

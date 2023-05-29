@@ -12,7 +12,7 @@ public interface CompraServicio {
     //int crearCompra(CompraDTO compraDTO);
     void crearCompra(CompraDTO compraDTO);
 
-    List<CompraGetDTO> listarCompras(int codigoUsuario);
+    List<CompraDTO> listarCompras(int codigoUsuario);
 
     CompraGetDTO obtenerCompra(int codigoCompra);
 
