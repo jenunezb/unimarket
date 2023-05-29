@@ -24,4 +24,15 @@ public class FavoritoControlador {
         public ResponseEntity<MensajeDTO>listarProductos(){
             return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK,false, favoritoServicio.listarProductos()));
         }
+
+        @DeleteMapping("/{codigo}")
+     public ResponseEntity<MensajeDTO> eliminarProducto(@PathVariable Integer codigo)throws Exception{
+            try{
+                favoritoServicio.eliminarProducto(codigo);
+                return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK,false, "Producto eliminado de favoritos"));
+
+            }catch (Exception e){
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new MensajeDTO(HttpStatus.INTERNAL_SERVER_ERROR, true, "El producto no existe"));
+    }
+         }
     }

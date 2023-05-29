@@ -66,4 +66,10 @@ public class FavoritoServicioImpl implements FavoritoServicio {
         );
         return favoritoDTO;
     }
+
+    @Override
+    public void eliminarProducto(Integer codigo)throws Exception{
+        System.out.println(codigo);
+        favoritoRepo.deleteById(codigo);
+    }
 }
