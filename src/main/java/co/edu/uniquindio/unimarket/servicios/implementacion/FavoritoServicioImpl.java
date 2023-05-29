@@ -1,9 +1,6 @@
 package co.edu.uniquindio.unimarket.servicios.implementacion;
 
-import co.edu.uniquindio.unimarket.dto.ProductoDTO;
-import co.edu.uniquindio.unimarket.dto.ProductoGetDTO;
-import co.edu.uniquindio.unimarket.dto.ProductoModeradorDTO;
-import co.edu.uniquindio.unimarket.dto.UsuarioDTO;
+import co.edu.uniquindio.unimarket.dto.*;
 import co.edu.uniquindio.unimarket.modelo.*;
 import co.edu.uniquindio.unimarket.repositorios.FavoritoRepo;
 import co.edu.uniquindio.unimarket.repositorios.ProductoRepo;
@@ -50,5 +47,23 @@ public class FavoritoServicioImpl implements FavoritoServicio {
         } else {
             throw new Exception("El producto o el usuario no existen");
         }
+    }
+
+    @Override
+    public List<FavoritoDTO> listarProductos() {
+        List<Favorito> lista = favoritoRepo.listarProductos();
+        List<FavoritoDTO> respuesta = new ArrayList<>();
+        for(Favorito p : lista){
+            respuesta.add( convertir(p) );
+        }
+        return respuesta;
+    }
+
+    private FavoritoDTO convertir(Favorito producto){
+
+        FavoritoDTO favoritoDTO = new FavoritoDTO(
+                producto.getCodigo(),producto.getProducto().getCodigo()
+        );
+        return favoritoDTO;
     }
 }

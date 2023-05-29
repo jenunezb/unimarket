@@ -1,5 +1,6 @@
 package co.edu.uniquindio.unimarket.servicios.interfaces;
 
+import co.edu.uniquindio.unimarket.dto.FavoritoDTO;
 import co.edu.uniquindio.unimarket.dto.ProductoDTO;
 import co.edu.uniquindio.unimarket.dto.ProductoGetDTO;
 import co.edu.uniquindio.unimarket.dto.ProductoModeradorDTO;
@@ -11,4 +12,6 @@ import java.util.List;
 public interface FavoritoServicio {
 
       void existsByProductoAndUsuario(Integer codigoProducto, Integer codigoUsuario) throws Exception;
+      List<FavoritoDTO> listarProductos();
 }
+

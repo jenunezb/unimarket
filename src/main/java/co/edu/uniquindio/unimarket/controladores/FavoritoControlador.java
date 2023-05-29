@@ -5,10 +5,7 @@ import co.edu.uniquindio.unimarket.servicios.interfaces.FavoritoServicio;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/favoritos")
@@ -22,5 +19,9 @@ public class FavoritoControlador {
             favoritoServicio.existsByProductoAndUsuario(favoritoDTO.getCodigoProducto(), favoritoDTO.getCodigoUsuario());
             return ResponseEntity.status(HttpStatus.CREATED).body(new MensajeDTO(HttpStatus.CREATED, false,
                     "El producto se agregó a favoritos exitosamente"));
+        }
+        @GetMapping
+        public ResponseEntity<MensajeDTO>listarProductos(){
+            return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK,false, favoritoServicio.listarProductos()));
         }
     }
