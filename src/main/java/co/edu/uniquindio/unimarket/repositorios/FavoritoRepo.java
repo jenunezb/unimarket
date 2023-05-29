@@ -18,4 +18,7 @@ public interface FavoritoRepo extends JpaRepository<Favorito, Integer> {
 
     @Query("select f from Favorito f")
     List<Favorito> listarProductos();
+
+    @Query("delete from Favorito f where f.producto=:codigo")
+    void eliminarProducto(Integer codigo);
 }

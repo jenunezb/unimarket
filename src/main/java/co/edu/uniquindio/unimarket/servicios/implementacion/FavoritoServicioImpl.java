@@ -59,10 +59,10 @@ public class FavoritoServicioImpl implements FavoritoServicio {
         return respuesta;
     }
 
-    private FavoritoDTO convertir(Favorito producto){
+    private FavoritoDTO convertir(Favorito favorito){
 
         FavoritoDTO favoritoDTO = new FavoritoDTO(
-                producto.getCodigo(),producto.getProducto().getCodigo()
+                favorito.getCodigo(),favorito.getProducto().getCodigo(),favorito.getUsuario().getCedula()
         );
         return favoritoDTO;
     }

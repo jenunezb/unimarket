@@ -11,7 +11,11 @@ import lombok.ToString;
 @ToString
 public class FavoritoDTO {
 
+    private int codigoFavorito;
+
     private int codigoProducto;
 
     private int codigoUsuario;
+
+
 }
