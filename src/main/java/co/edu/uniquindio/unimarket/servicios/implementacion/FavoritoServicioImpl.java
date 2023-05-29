@@ -36,11 +36,18 @@ public class FavoritoServicioImpl implements FavoritoServicio {
         if (productoOptional.isPresent() && usuarioOptional.isPresent()) {
             Producto producto = productoOptional.get();
             Usuario usuario = usuarioOptional.get();
-            Favorito favorito = new Favorito();
-            favorito.setProducto(producto);
-            favorito.setUsuario(usuario);
 
-            favoritoRepo.save(favorito);
+            boolean favoritoExistente = favoritoRepo.existsByProductoAndUsuario(producto, usuario);
+
+            if (!favoritoExistente) {
+                Favorito favorito = new Favorito();
+                favorito.setProducto(producto);
+                favorito.setUsuario(usuario);
+
+                favoritoRepo.save(favorito);
+            } else {
+                throw new Exception("El producto ya se encuentra en los favoritos del usuario");
+            }
         } else {
             throw new Exception("El producto o el usuario no existen");
         }
