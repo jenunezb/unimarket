@@ -28,7 +28,7 @@ public class FavoritoServicioImpl implements FavoritoServicio {
     private final FavoritoRepo favoritoRepo;
 
     @Override
-    public void agregarFavorito(Integer codigoProducto, Integer codigoUsuario) throws Exception {
+    public void existsByProductoAndUsuario(Integer codigoProducto, Integer codigoUsuario) throws Exception {
 
         Optional<Producto> productoOptional = productoRepo.findById(codigoProducto);
         Optional<Usuario> usuarioOptional = usuarioRepo.findById(codigoUsuario);
@@ -38,7 +38,6 @@ public class FavoritoServicioImpl implements FavoritoServicio {
             Usuario usuario = usuarioOptional.get();
 
             boolean favoritoExistente = favoritoRepo.existsByProductoAndUsuario(producto, usuario);
-
             if (!favoritoExistente) {
                 Favorito favorito = new Favorito();
                 favorito.setProducto(producto);
@@ -51,6 +50,5 @@ public class FavoritoServicioImpl implements FavoritoServicio {
         } else {
             throw new Exception("El producto o el usuario no existen");
         }
-
     }
 }

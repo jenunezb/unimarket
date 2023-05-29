@@ -19,7 +19,7 @@ public class FavoritoControlador {
 
         @PostMapping("/crear")
         public ResponseEntity<MensajeDTO> agregarFav(@RequestBody FavoritoDTO favoritoDTO) throws Exception {
-            favoritoServicio.agregarFavorito(favoritoDTO.getCodigoProducto(), favoritoDTO.getCodigoUsuario());
+            favoritoServicio.existsByProductoAndUsuario(favoritoDTO.getCodigoProducto(), favoritoDTO.getCodigoUsuario());
             return ResponseEntity.status(HttpStatus.CREATED).body(new MensajeDTO(HttpStatus.CREATED, false,
                     "El producto se agregó a favoritos exitosamente"));
         }

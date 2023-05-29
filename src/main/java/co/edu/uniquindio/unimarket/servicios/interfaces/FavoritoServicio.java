@@ -10,5 +10,5 @@ import java.util.List;
 
 public interface FavoritoServicio {
 
-      void agregarFavorito(Integer codigoProducto, Integer codigoUsuario) throws Exception;
+      void existsByProductoAndUsuario(Integer codigoProducto, Integer codigoUsuario) throws Exception;
 }
