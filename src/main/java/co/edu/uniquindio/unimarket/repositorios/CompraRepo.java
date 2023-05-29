@@ -17,6 +17,6 @@ public interface CompraRepo extends JpaRepository<Compra, Integer> {
     @Query("select u from Usuario u where u.cedula = :cedula")
     Optional <Usuario> findUsuario(@Param("cedula") Integer cedula);
 
-    @Query("select p from Detalle_Compra d  inner join Producto p on d.producto.codigo = p.codigo where p.codigo = :codigoProducto")
+    @Query("select p from Producto p where p.codigo = :codigoProducto")
     Optional <Producto> findProducto(@Param("codigoProducto") Integer codigoProducto);
 }
