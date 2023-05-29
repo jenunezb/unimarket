@@ -72,4 +72,10 @@ public class ProductoControlador {
         productoServicio.modificarproducto(codigoProducto );
          return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK,false, "producto modificado" ));
     }
+
+    @PutMapping("/editar/{codigoProducto}")
+    public ResponseEntity <MensajeDTO>modificarproductoU(@PathVariable Integer codigoProducto, @RequestBody ProductoDTO productoDTO) throws Exception{
+        productoServicio.modificarproductoU(codigoProducto, productoDTO );
+        return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK,false, "producto modificado exitosamente" ));
+    }
 }

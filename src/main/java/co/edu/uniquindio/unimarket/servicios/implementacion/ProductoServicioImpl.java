@@ -170,6 +170,28 @@ public class ProductoServicioImpl implements ProductoServicio {
         }
     }
 
+    public void modificarproductoU(Integer codigoProducto, ProductoDTO productoDTO) throws Exception {
+        Optional<Producto> productoOptional = productoRepo.findById(codigoProducto);
+        if (productoOptional.isPresent()) {
+            Producto producto = productoOptional.get();
+            if(producto.getActivo()==Activo.ACTIVO){
+                producto.setActivo(Activo.INACTIVO);
+            }
+            producto.setNombre( productoDTO.getNombre() );
+            producto.setDescripcion( productoDTO.getDescripcion() );
+            producto.setUnidades( productoDTO.getUnidades() );
+            producto.setPrecio( productoDTO.getPrecio() );
+            producto.setVendedor( usuarioServicio.obtener( productoDTO.getCodigoVendedor() ) );
+            producto.setImagenes( productoDTO.getImagenes() );
+            producto.setCategoria( productoDTO.getCategoria() );
+            producto.setFechaCreacion( LocalDateTime.now() );
+            producto.setFechaLimite( LocalDateTime.now().plusDays(60) );
+            productoRepo.save(producto);
+        } else {
+            throw new Exception("El producto con el código " + codigoProducto + " no existe");
+        }
+    }
+
     @Override
     public List<ProductoModeradorDTO> listarProductosModerador() {
 

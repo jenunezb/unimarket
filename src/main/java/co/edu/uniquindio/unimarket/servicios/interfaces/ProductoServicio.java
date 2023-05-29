@@ -5,6 +5,7 @@ import co.edu.uniquindio.unimarket.dto.ProductoGetDTO;
 import co.edu.uniquindio.unimarket.dto.ProductoModeradorDTO;
 import co.edu.uniquindio.unimarket.modelo.Categoria;
 import co.edu.uniquindio.unimarket.modelo.Estado;
+import co.edu.uniquindio.unimarket.modelo.Producto;
 
 import java.util.List;
 
@@ -39,4 +40,6 @@ public interface ProductoServicio {
     List<ProductoModeradorDTO>listarProductosModerador();
 
     void modificarproducto(Integer codigoProducto) throws Exception;
+
+    void modificarproductoU(Integer codigoProducto, ProductoDTO productoDTO) throws Exception ;
 }

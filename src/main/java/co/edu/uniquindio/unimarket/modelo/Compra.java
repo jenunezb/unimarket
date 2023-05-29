@@ -19,7 +19,7 @@ public class Compra implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codigo;
 
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private LocalDate fecha_creacion;
 
     @Column(nullable = false)
