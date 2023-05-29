@@ -67,9 +67,9 @@ public class CompraServicioImpl implements CompraServicio {
 
 
     @Override
-    public List<CompraDTO> listarCompras(int codigoUsuario) {
+    public List<Compra> listarCompras(int codigoUsuario) {
         List<Compra> compras = compraRepo.listarCompras(codigoUsuario);
-        CompraDTO compraDTO = new CompraDTO();
+       /* CompraDTO compraDTO = new CompraDTO();
         List<CompraDTO> listarCompras = new ArrayList<>();
         DetalleCompraDTO detalleCompraDTO = new DetalleCompraDTO();
         List<DetalleCompraDTO> detalleCompraDTOS = new ArrayList<>();
@@ -83,16 +83,16 @@ public class CompraServicioImpl implements CompraServicio {
             detalleCompraDTO.setCodigoProducto(detalleCompra.getProducto().getCodigo());
             detalleCompraDTO.setPrecio((float) detalleCompra.getPrecio());
             detalleCompraDTO.setUnidades(detalleCompra.getUnidades());
-            detalleCompraDTOS.add(detalleCompraDTO);
+                detalleCompraDTOS.add(detalleCompraDTO);
             }
 
 
             compraDTO.setDetalleCompraDTO(detalleCompraDTOS);
             listarCompras.add(compraDTO);
 
-        }
+        }*/
 
-        return listarCompras;
+        return compras;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package co.edu.uniquindio.unimarket.modelo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -33,5 +34,6 @@ public class Compra implements Serializable {
     private List<Detalle_Compra> detalle_compras;
 
     @ManyToOne
+    @JsonIgnore
     private Usuario usuario;
 }

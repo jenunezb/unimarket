@@ -1,5 +1,6 @@
 package co.edu.uniquindio.unimarket.modelo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,9 +25,12 @@ public class Detalle_Compra implements Serializable {
     private double precio;
 
     @ManyToOne
+
+    @JsonIgnore
     private Producto producto;
 
     @ManyToOne
+    @JsonIgnore
     private Compra compra;
 
 }
