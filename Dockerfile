@@ -1,4 +1,4 @@
-FROM amazoncorretto:17-al2-jdk
+FROM openjdk:17
 
 COPY build/libs/unimarket-1.0-SNAPSHOT.jar app.jar
 
