@@ -2,7 +2,7 @@
 *.class
 /.gradle/
 /*/bin/
-/*/build/
-/build/
+##/*/build/
+##/build/
 /src/main/resources/application.properties
 
